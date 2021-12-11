@@ -1,0 +1,19 @@
+{
+  "name": "floema_project",
+  "version": "1.0.0",
+  "description": "Awwwards Floema Website and WebGL Demo.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaguarj/floema_project.git"
+  },
+  "author": "Josh Seipel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaguarj/floema_project/issues"
+  },
+  "homepage": "https://github.com/jaguarj/floema_project#readme"
+}
