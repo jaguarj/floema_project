@@ -12,7 +12,7 @@ const dirShared = path.join(__dirname, 'shared');
 const dirStyles = path.join(__dirname, 'styles');
 const dirNode = 'node_modules';
 
-console.log("=== dirApp: === \n",dirApp, "\n", "=== dirAssests === \n", dirShared, "\n", "== dirStyles == \n", dirStyles);
+console.log("=== dirApp: === \n", dirApp, "\n", "=== dirAssests === \n", dirShared, "\n", "== dirStyles == \n", dirStyles);
 
 module.exports = {
     entry: [
@@ -57,24 +57,24 @@ module.exports = {
         //                 ['optipng', { optimizationLevel: 5}],
         //             ],
         //         },
-                
+
         //     },
         // }),
 
         new ImageMinimizerPlugin({
             minimizer: {
-              implementation: ImageMinimizerPlugin.imageminMinify,
-              options: {
-                // Lossless optimization with custom option
-                // Feel free to experiment with options for better result for you
-                plugins: [
-                  ["gifsicle", { interlaced: true }],
-                  ["jpegtran", { progressive: true }],
-                  ["optipng", { optimizationLevel: 5 }],
-                ],
-              },
+                implementation: ImageMinimizerPlugin.imageminMinify,
+                options: {
+                    // Lossless optimization with custom option
+                    // Feel free to experiment with options for better result for you
+                    plugins: [
+                        ["gifsicle", { interlaced: true }],
+                        ["jpegtran", { progressive: true }],
+                        ["optipng", { optimizationLevel: 5 }],
+                    ],
+                },
             },
-          }),
+        }),
     ],
 
     module: {
@@ -110,11 +110,34 @@ module.exports = {
                 test: /\.(jpe?g|png|gif|svg|woff2?|fnt|webp)$/,
                 loader: 'file-loader',
                 options: {
-                    name (file) {
+                    name(file) {
                         return '[name].[hash].[ext]'
                     }
                 }
-            }
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg|webp)$/i,
+                use: [
+                    {
+                        loader: ImageMinimizerPlugin.loader,
+                        // enforce: "pre",
+                        options: {
+                            minimizer: {
+                                implementation: ImageMinimizerPlugin.imageminMinify,
+                                options: {
+                                    plugins: [
+                                        "imagemin-gifsicle",
+                                        "imagemin-mozjpeg",
+                                        "imagemin-pngquant",
+                                        "imagemin-svgo",
+                                        "imagemin-webp",
+                                    ],
+                                },
+                            },
+                        },
+                    },
+                ],
+            },
         ]
     }
 }
