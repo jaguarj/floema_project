@@ -1,12 +1,19 @@
 const path = require('path');
-const webpack = require('webpack');
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const IS_DEVELOPMENT = process.env.NODE_ENV === 'dev';
+const { CleanWebpackPlugin} = require('clean-webpack-plugin');
 
-const dirApp = path.join(__dirname, 'app');
-const dirAssests = path.join(__dirname, 'assets');
-const dirStyles = path.join(__dirname, 'styles');
+const { merge } = require('webpack-merge');
+const config = require('./webpack.config');
 
-console.log(dirApp, dirAssests, dirStyles);
+module.exports = merge(config, {
+    mode: 'production',
+
+    output: {
+        path: path.join(__dirname, 'public')
+    },
+
+    plugins: [
+        new CleanWebpackPlugin()
+    ]
+
+})
