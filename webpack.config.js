@@ -3,6 +3,7 @@ const webpack = require('webpack');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { dir } = require('console');
 const IS_DEVELOPMENT = process.env.NODE_ENV === 'dev';
 
 const dirApp = path.join(__dirname, 'app');
@@ -16,7 +17,6 @@ module.exports = {
     entry: [
         path.join(dirApp, 'index.js'),
         path.join(dirStyles, 'index.scss')
-
     ],
 
     resolve: {
@@ -79,9 +79,13 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif|svg|woff2?|fnt|webp)$/,
-                loader: 'file-loader'
+                loader: 'file-loader',
+                options: {
+                    // name (file) {
+                    //     return '[hash].[ext]'
+                    // }
+                }
             }
         ]
     }
-
 }
