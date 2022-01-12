@@ -124,20 +124,29 @@ module.exports = {
                         options: {
                             minimizer: {
                                 implementation: ImageMinimizerPlugin.imageminMinify,
-                                options: {
-                                    plugins: [
-                                        "imagemin-gifsicle",
-                                        "imagemin-mozjpeg",
-                                        "imagemin-pngquant",
-                                        "imagemin-svgo",
-                                        "imagemin-webp",
-                                    ],
-                                },
                             },
                         },
                     },
                 ],
             },
+            // {
+            //     test: /\.(glsl|frag|vert)$/,
+            //     loader: 'raw-loader',
+            //     exclude: /node_modules/
+            // },
+            // {
+            //     test: /\.(glsl|frag|vert)$/,
+            //     loader: 'glslify-loader',
+            //     exclude: /node_modules/
+            // },
+            {
+                test: /\.(glsl|vs|fs|vert|frag)$/,
+                exclude: /node_modules/,
+                use: [
+                  'raw-loader',
+                  'glslify-loader'
+                ]
+            }
         ]
     }
 }
