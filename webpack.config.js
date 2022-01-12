@@ -40,7 +40,48 @@ module.exports = {
                     to: ''
                 }
             ]
+        }),
+
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css'
         })
-    ]
+    ],
+
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            },
+
+            {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: ''
+                        }
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    },
+                    {
+                        loader: 'sass-loader'
+                    },
+                ]
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg|woff2?|fnt|webp)$/,
+                loader: 'file-loader'
+            }
+        ]
+    }
 
 }
