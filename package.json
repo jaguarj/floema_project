@@ -3,8 +3,9 @@
 	"version": "1.0.0",
 	"description": "Awwwards Floema Website and WebGL Demo.",
 	"scripts": {
-		"build": "webpack --progress --config webpack.config.build.js",
-		"development": "webpack server --progress --config webpack.config.development.js",
+		"backend:build": "node app.js",
+		"frontend:build": "webpack --progress --config webpack.config.build.js",
+		"frontend:development": "webpack server --progress --config webpack.config.development.js",
 		"start": "npm run development",
 		"test": "node test.js"
 	},
@@ -48,5 +49,8 @@
 		"webpack-dev-middleware": "^5.3.0",
 		"webpack-dev-server": "^4.6.0",
 		"webpack-merge": "^5.8.0"
+	},
+	"dependencies": {
+		"express": "^4.17.2"
 	}
 }
