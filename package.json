@@ -4,6 +4,7 @@
 	"description": "Awwwards Floema Website and WebGL Demo.",
 	"scripts": {
 		"backend:build": "node app.js",
+		"backend:development": "nodemon app.js",
 		"frontend:build": "webpack --progress --config webpack.config.build.js",
 		"frontend:development": "webpack server --progress --config webpack.config.development.js",
 		"start": "npm run development",
@@ -51,6 +52,7 @@
 		"webpack-merge": "^5.8.0"
 	},
 	"dependencies": {
-		"express": "^4.17.2"
+		"express": "^4.17.2",
+		"nodemon": "^2.0.15"
 	}
 }
