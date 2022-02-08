@@ -18,7 +18,7 @@ app.get('/collections', (req, res) => {
   res.render('pages/collections')
 })
 
-app.get('/detail/:id', (req, res) => {
+app.get('/details/:id', (req, res) => {
   res.render('pages/details')
 })
 
