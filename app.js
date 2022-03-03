@@ -1,3 +1,7 @@
+require('dotenv').config()
+
+console.log("+++++++++++++++", process.env.PRISMIC_ENDPOINT, process.env.PRISMIC_CLIENT_ID, "+++++++++++++++")
+
 const express = require('express')
 const app = express()
 const path = require('path')
